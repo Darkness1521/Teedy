@@ -182,10 +182,25 @@
             <configuration>
               <systemProperties>
                 <application.mode>dev</application.mode>
-                <docs.home>../data/docs</docs.home>
+                <!-- Use explicit project-relative path for persistence -->
+                <docs.home>${project.basedir}/../data/docs</docs.home>
               </systemProperties>
               <webApp>
-                <contextPath>/docs-web</contextPath>
+                <!-- 关键修改1: 改为根路径，直接通过 8080 访问 -->
+                <contextPath>/</contextPath>
+                
+                <!-- 关键修改2: 配置资源目录，让 Jetty 找到前端文件 -->
+                <resourceBases>
+                  <!-- Serve the `src` folder first so index.html and its relative assets resolve correctly -->
+                  <resourceBase>${project.basedir}/src/main/webapp/src</resourceBase>
+                  <resourceBase>${project.basedir}/src/main/webapp</resourceBase>
+                </resourceBases>
+                
+                <!-- 关键修改3: 设置欢迎文件，直接显示 index.html -->
+                <welcomeFiles>
+                  <welcomeFile>index.html</welcomeFile>
+                </welcomeFiles>
+                
                 <overrideDescriptor>${project.basedir}/src/dev/main/webapp/web-override.xml</overrideDescriptor>
               </webApp>
             </configuration>
