@@ -19,3 +19,19 @@ docs/*
 
 #macos
 .DS_Store
+
+data/docs/db/docs.mv.db
+data/docs/log/docs.log
+
+# Database files
+*.mv.db
+*.trace.db
+
+# Log files
+*.log
+logs/
+
+target/
+*.class
+*.jar
+*.war
