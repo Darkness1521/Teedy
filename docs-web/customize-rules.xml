@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Ruleset for Teedy"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>
+        Customized PMD ruleset for Teedy project including:
+        - Lines of Code (LoC)
+        - Cyclomatic Complexity (CC)
+        - Weighted Methods per Class (WMC)
+        - Coupling Between Objects (CBO)
+        - Lack of Cohesion in Methods (LCOM)
+    </description>
+
+    <!-- Lines of Code (LoC) - ExcessiveMethodLength and ExcessiveClassLength -->
+    <rule ref="category/java/design.xml/ExcessiveMethodLength">
+        <properties>
+            <property name="minimum" value="100"/>
+        </properties>
+    </rule>
+    
+    <rule ref="category/java/design.xml/ExcessiveClassLength">
+        <properties>
+            <property name="minimum" value="1000"/>
+        </properties>
+    </rule>
+
+    <!-- Cyclomatic Complexity (CC) -->
+    <rule ref="category/java/design.xml/CyclomaticComplexity">
+        <properties>
+            <property name="classReportLevel" value="80"/>
+            <property name="methodReportLevel" value="10"/>
+        </properties>
+    </rule>
+
+    <!-- Weighted Methods per Class (WMC) - NPathComplexity and CognitiveComplexity -->
+    <rule ref="category/java/design.xml/NPathComplexity">
+        <properties>
+            <property name="reportLevel" value="200"/>
+        </properties>
+    </rule>
+    
+    <rule ref="category/java/design.xml/CognitiveComplexity">
+        <properties>
+            <property name="reportLevel" value="15"/>
+        </properties>
+    </rule>
+
+    <!-- Coupling Between Objects (CBO) - CouplingBetweenObjects -->
+    <rule ref="category/java/design.xml/CouplingBetweenObjects">
+        <properties>
+            <property name="threshold" value="20"/>
+        </properties>
+    </rule>
+
+    <!-- Lack of Cohesion in Methods (LCOM) - GodClass -->
+    <rule ref="category/java/design.xml/GodClass"/>
+
+</ruleset>
