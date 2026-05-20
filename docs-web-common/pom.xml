@@ -158,7 +158,7 @@
         <version>3.21.2</version>
         <configuration>
           <rulesets>
-            <ruleset>${maven.multiModuleProjectDirectory}/customize-rules.xml</ruleset>
+            <ruleset>customize-rules.xml</ruleset>
           </rulesets>
         </configuration>
       </plugin>
